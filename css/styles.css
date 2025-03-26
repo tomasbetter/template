@@ -671,7 +671,13 @@ input[type="date"].form-input::-webkit-calendar-picker-indicator {
 
 /* ===== CONTACT PAGE STYLES ===== */
 .contact-section {
-  padding: 50px 0;
+  padding: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .contact-section {
+    padding: var(--section-padding-desktop);
+  }
 }
 
 .contact-form-container {
