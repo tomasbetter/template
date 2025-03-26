@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travel agency: Contact Us</title>
+    <meta name="description" content="Travel agency: Contact Us">
+    <meta name="author" content="You">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Dancing+Script&family=Montserrat:400,700&&display=swap"
+      rel="stylesheet"
+    >
+    <!-- Consolidated Custom CSS -->
+    <link href="./css/styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <header class="small-header">
+      <div class="container">
+        <div class="nav-container fade-in fade-in-1 transition-opacity">
+          <div class="search-icon" id="search-toggle">
+            <img src="./icons/search-white.svg" alt="Search">
+          </div>
+          <img src="./icons/globe-white.svg" alt="Logo" class="logo">
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div class="menu-icon">
+            <img src="./icons/three-bars-white.svg" alt="Menu">
+          </div>
+        </div>
+        <div class="search-form-container fade-in" id="search-form">
+          <form class="search-form">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search destinations..." required>
+              <button type="submit" class="btn">
+                <img src="./icons/search-white.svg" alt="Search">
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="header-content">
+          <div class="tagline fade-in fade-in-2">GET IN TOUCH</div>
+          <h1 class="fade-in fade-in-3 transition-opacity">
+            Contact Us
+          </h1>
+        </div>
+      </div>
+    </header>
+    
+    <section class="contact-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="contact-form-container fade-in fade-in-1">
+              <h2 class="mb-4">Send Us a Message</h2>
+              <form id="contact-form" action="contact-success.html" method="get">
+                <!-- Name -->
+                <div class="mb-3">
+                  <label for="name" class="form-label">Full Name</label>
+                  <input type="text" class="form-control form-input" id="name" name="name" required>
+                </div>
+                
+                <!-- Email -->
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" class="form-control form-input" id="email" name="email" required>
+                </div>
+                
+                <!-- Phone -->
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control form-input" id="phone" name="phone" required>
+                </div>
+                
+                <!-- Message -->
+                <div class="mb-4">
+                  <label for="message" class="form-label">Your Message</label>
+                  <textarea class="form-control form-input" id="message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100 d-flex align-items-center justify-content-center transition-all">
+                  <span class="me-2">Send Message</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
+          
+          <div class="col-md-5">
+            <div class="contact-info fade-in fade-in-2">
+              <h3>Our Information</h3>
+              <p>
+                Have questions about our travel packages or need assistance planning your dream vacation? 
+                Our team of travel experts is here to help. Reach out to us using the contact form or 
+                through any of the methods below.
+              </p>
+              
+              <div class="contact-info-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                  <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>
+                <div>
+                  <strong>Address:</strong><br>
+                  123 Travel Street<br>
+                  Vilnius, Lithuania 10001
+                </div>
+              </div>
+              
+              <div class="contact-info-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                </svg>
+                <div>
+                  <strong>Email:</strong><br>
+                  info@travelagency.com
+                </div>
+              </div>
+              
+              <div class="contact-info-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                  <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                </svg>
+                <div>
+                  <strong>Phone:</strong><br>
+                  +370 123 45678
+                </div>
+              </div>
+              
+              <div class="contact-info-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                  <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                </svg>
+                <div>
+                  <strong>Business Hours:</strong><br>
+                  Monday - Friday: 9:00 AM - 6:00 PM<br>
+                  Saturday: 10:00 AM - 4:00 PM<br>
+                  Sunday: Closed
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 footer-links fade-in fade-in-1 transition-opacity">
+            <h3>Links</h3>
+            <ul class="list-unstyled">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="destinations.html">Destinations</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-8 newsletter fade-in fade-in-2 transition-opacity ms-auto">
+            <h3>Newsletter</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              euismod, nisl nec tincidunt dapibus, magna libero fermentum augu.
+            </p>
+            <form class="newsletter-form" id="newsletter-form">
+              <div class="input-group">
+                <input type="email" class="form-control form-input" placeholder="Email" required>
+                <button type="submit" class="subscribe-button btn btn-success">
+                  Subscribe <img src="./icons/arrow-right-white.svg" alt="Subscribe">
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Consolidated Custom JavaScript -->
+    <script src="./js/script.js"></script>
+    <script>
+      // Contact form validation
+      document.addEventListener('DOMContentLoaded', function() {
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+          contactForm.addEventListener('submit', function(e) {
+            // Form is already set to validate required fields with HTML5 validation
+            // This is just additional validation if needed
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const phone = document.getElementById('phone');
+            const message = document.getElementById('message');
+            
+            if (!name.value || !email.value || !phone.value || !message.value) {
+              e.preventDefault();
+              alert('Please fill in all fields');
+            }
+            // If all fields are filled, the form will submit to contact-success.html
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
