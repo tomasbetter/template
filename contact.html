@@ -64,25 +64,42 @@
                 <!-- Name -->
                 <div class="mb-3">
                   <label for="name" class="form-label">Full Name</label>
-                  <input type="text" class="form-control form-input" id="name" name="name" required>
+                  <input type="text" class="form-control form-input" id="name" name="name" 
+                         pattern="[A-Za-z\s'-]{2,50}" minlength="2" maxlength="50"
+                         title="Please enter a valid name (2-50 characters, letters, spaces, hyphens and apostrophes only)"
+                         required>
+                  <div class="invalid-feedback">Please enter a valid name (2-50 characters, letters only)</div>
                 </div>
                 
                 <!-- Email -->
                 <div class="mb-3">
                   <label for="email" class="form-label">Email Address</label>
-                  <input type="email" class="form-control form-input" id="email" name="email" required>
+                  <input type="email" class="form-control form-input" id="email" name="email" 
+                         pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,}$"
+                         title="Please enter a valid email address with a domain (e.g., name@example.com)"
+                         required>
+                  <div class="invalid-feedback">Please enter a valid email address with a domain (e.g., name@example.com)</div>
                 </div>
                 
                 <!-- Phone -->
                 <div class="mb-3">
                   <label for="phone" class="form-label">Phone Number</label>
-                  <input type="tel" class="form-control form-input" id="phone" name="phone" required>
+                  <input type="tel" class="form-control form-input" id="phone" name="phone" 
+                         pattern="^[+0-9()\s-]+$"
+                         title="Please enter a valid phone number using only digits, +, -, (), and spaces"
+                         required>
+                  <div class="invalid-feedback">Please enter a valid phone number (digits only, with optional +, -, (), and spaces)</div>
                 </div>
                 
                 <!-- Message -->
                 <div class="mb-4">
                   <label for="message" class="form-label">Your Message</label>
-                  <textarea class="form-control form-input" id="message" name="message" rows="5" required></textarea>
+                  <textarea class="form-control form-input" id="message" name="message" rows="5" 
+                            minlength="10" maxlength="1000"
+                            title="Please enter a message (10-1000 characters)"
+                            required></textarea>
+                  <div class="invalid-feedback">Please enter a message (minimum 10 characters)</div>
+                  <small id="message-counter" class="form-text text-muted">0/1000 characters</small>
                 </div>
                 
                 <!-- Submit Button -->
@@ -194,20 +211,128 @@
       // Contact form validation
       document.addEventListener('DOMContentLoaded', function() {
         const contactForm = document.getElementById('contact-form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const messageInput = document.getElementById('message');
+        const messageCounter = document.getElementById('message-counter');
+        
+        // Function to validate email with domain check
+        function validateEmail(email) {
+          // Basic format check
+          const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,}$/;
+          if (!emailRegex.test(email)) return false;
+          
+          // Additional check for dot in domain
+          const parts = email.split('@');
+          if (parts.length !== 2) return false;
+          return parts[1].includes('.');
+        }
+        
+        // Function to validate a field and show appropriate feedback
+        function validateField(field) {
+          // Special case for email to ensure domain has a dot
+          if (field.id === 'email') {
+            const isValidEmail = validateEmail(field.value);
+            if (isValidEmail) {
+              field.classList.remove('is-invalid');
+              field.classList.add('is-valid');
+              return true;
+            } else {
+              field.classList.remove('is-valid');
+              field.classList.add('is-invalid');
+              return false;
+            }
+          }
+          
+          // Standard validation for other fields
+          if (field.validity.valid) {
+            field.classList.remove('is-invalid');
+            field.classList.add('is-valid');
+            return true;
+          } else {
+            field.classList.remove('is-valid');
+            field.classList.add('is-invalid');
+            return false;
+          }
+        }
+        
+        // Update character counter for message
+        if (messageInput && messageCounter) {
+          messageInput.addEventListener('input', function() {
+            const currentLength = messageInput.value.length;
+            const maxLength = messageInput.getAttribute('maxlength');
+            messageCounter.textContent = `${currentLength}/${maxLength} characters`;
+            
+            // Change counter color when approaching limit
+            if (currentLength >= maxLength * 0.9) {
+              messageCounter.classList.add('text-danger');
+            } else {
+              messageCounter.classList.remove('text-danger');
+            }
+            
+            validateField(messageInput);
+          });
+        }
+        
+        // Function to validate phone number
+        function validatePhone(phone) {
+          // Only allow digits, plus sign, parentheses, hyphens, and spaces
+          return /^[+0-9()\s-]+$/.test(phone);
+        }
+        
+        // Validate fields on input
+        if (nameInput) {
+          nameInput.addEventListener('input', function() {
+            validateField(nameInput);
+          });
+        }
+        
+        if (emailInput) {
+          emailInput.addEventListener('input', function() {
+            validateField(emailInput);
+          });
+        }
+        
+        if (phoneInput) {
+          // Prevent typing letters in phone field
+          phoneInput.addEventListener('keypress', function(e) {
+            const allowedChars = /[0-9+\-\s()]/;
+            if (!allowedChars.test(e.key)) {
+              e.preventDefault(); // Prevent typing the character
+            }
+          });
+          
+          // Validate on input
+          phoneInput.addEventListener('input', function() {
+            // If any invalid characters somehow got in (e.g., paste), remove them
+            if (!validatePhone(phoneInput.value)) {
+              phoneInput.value = phoneInput.value.replace(/[^+0-9()\s-]/g, '');
+            }
+            validateField(phoneInput);
+          });
+        }
+        
+        // Form submission validation
         if (contactForm) {
           contactForm.addEventListener('submit', function(e) {
-            // Form is already set to validate required fields with HTML5 validation
-            // This is just additional validation if needed
-            const name = document.getElementById('name');
-            const email = document.getElementById('email');
-            const phone = document.getElementById('phone');
-            const message = document.getElementById('message');
+            let isValid = true;
             
-            if (!name.value || !email.value || !phone.value || !message.value) {
+            // Validate each field
+            isValid = validateField(nameInput) && isValid;
+            isValid = validateField(emailInput) && isValid;
+            isValid = validateField(phoneInput) && isValid;
+            isValid = validateField(messageInput) && isValid;
+            
+            if (!isValid) {
               e.preventDefault();
-              alert('Please fill in all fields');
+              // Scroll to the first invalid field
+              const firstInvalid = contactForm.querySelector('.is-invalid');
+              if (firstInvalid) {
+                firstInvalid.focus();
+              }
             }
-            // If all fields are filled, the form will submit to contact-success.html
+            // If all fields are valid, the form will submit to contact-success.html
           });
         }
       });
