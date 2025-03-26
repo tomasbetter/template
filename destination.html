@@ -22,6 +22,7 @@
         height: 100%;
         display: flex;
         align-items: center;
+        justify-content: center;
       }
       .hero-image-container img {
         max-height: 500px;
@@ -37,7 +38,9 @@
           <div class="search-icon" id="search-toggle">
             <img src="./icons/search-white.svg" alt="Search">
           </div>
-          <img src="./icons/globe-white.svg" alt="Logo" class="logo">
+          <a href="index.html">
+            <img src="./icons/globe-white.svg" alt="Logo" class="logo">
+          </a>
           <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="destinations.html">Destinations</a>
@@ -69,7 +72,7 @@
     <section class="destination-detail">
       <div class="container">
         <!-- Hero Image and Booking Form Side by Side -->
-        <div class="row mb-5">
+        <div class="row mb-5 d-flex align-items-stretch">
           <!-- Hero Image -->
           <div class="col-md-7">
             <div class="hero-image-container">
@@ -79,7 +82,7 @@
           
           <!-- Booking Form -->
           <div class="col-md-5">
-            <div class="booking-form-container fade-in fade-in-3">
+            <div class="booking-form-container fade-in fade-in-3" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
               <h2 class="text-center mb-4">Book Your Trip to Paris</h2>
               <form id="destination-booking-form" class="row g-3">
                 <!-- From Date -->
@@ -129,27 +132,22 @@
         <div class="row mb-5">
           <div class="destinations-text fade-in fade-in-2 transition-opacity row">
             <div class="col-md-4">
-              <div class="destination-description">
                 <p>
                   Paris, the City of Light, is a timeless destination that captures the hearts of travelers from around the world. 
                   From the iconic Eiffel Tower to the historic Notre-Dame Cathedral, every corner of this magnificent city tells a story 
                   of art, culture, and romance. The city's grand boulevards, charming cafés, and world-class museums create an atmosphere 
                   that is both sophisticated and inviting.
                 </p>
-              </div>
             </div>
             <div class="col-md-4">
-              <div class="destination-description">
                 <p>
                   The city's rich cultural heritage is evident in its architecture, from the Gothic splendor of Sainte-Chapelle to 
                   the modern glass pyramid of the Louvre. Art lovers will find themselves in paradise, with masterpieces from the 
                   Renaissance to contemporary works on display in the city's many galleries. The Musée d'Orsay, housed in a former 
                   railway station, offers a unique setting for its collection of Impressionist art.
                 </p>
-              </div>
             </div>
             <div class="col-md-4">
-              <div class="destination-description">
                 <p>
                   Beyond its cultural treasures, Paris is a city of culinary excellence. From Michelin-starred restaurants to 
                   neighborhood bistros, the city offers an endless array of dining experiences. The local markets, such as Marché 
@@ -157,7 +155,6 @@
                   sipping coffee at a sidewalk café or enjoying a leisurely dinner along the Seine, Paris offers countless moments 
                   of pure pleasure.
                 </p>
-              </div>
             </div>
           </div>
         </div>
