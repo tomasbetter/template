@@ -3,6 +3,57 @@
  * Contains all JavaScript code from index.html
  */
 
+// Helper function to calculate and set font size based on calendar width
+function updateCalendarFontSize(instance) {
+  // Calculate base font size (proportional to container width)
+  const width = instance.calendarContainer.offsetWidth;
+  const baseFontSize = Math.max(12, Math.min(18, width * 0.05)); // Increased min/max and multiplier
+  
+  // Apply the calculated font size
+  instance.calendarContainer.style.fontSize = baseFontSize + 'px';
+}
+
+// Helper function to update calendar width
+function updateCalendarWidth(instance) {
+  // Make calendar slightly wider than input to ensure all days are visible
+  // Ensure minimum width of 280px
+  const newWidth = Math.max(280, instance.input.offsetWidth * 1.1);
+  instance.calendarContainer.style.width = newWidth + 'px';
+  
+  // Update font size after width change
+  updateCalendarFontSize(instance);
+}
+
+// Function to setup Flatpickr instance
+function setupFlatpickr(inputId) {
+  return flatpickr("#" + inputId, {
+    dateFormat: "Y-m-d",
+    allowInput: true,
+    disableMobile: true, // Disable mobile native date picker
+    defaultDate: null, // Don't set any default date
+    onReady: function(selectedDates, dateStr, instance) {
+      // Set initial width and font size
+      updateCalendarWidth(instance);
+      // Clear any stored value
+      instance.input.value = '';
+    },
+    onOpen: function(selectedDates, dateStr, instance) {
+      // Update width and font size when opening
+      updateCalendarWidth(instance);
+      
+      // When calendar opens, change the input type to text to maintain the placeholder
+      instance.input.type = 'text';
+    },
+    onClose: function(selectedDates, dateStr, instance) {
+      // When calendar closes without a selection, keep it as text
+      if (!dateStr) {
+        instance.input.type = 'text';
+        instance.input.value = '';
+      }
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   // Burger menu functionality
   const menuIcon = document.querySelector('.menu-icon');
@@ -93,70 +144,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Initialize Flatpickr on date inputs
-  initializeFlatpickr();
-});
-
-/**
- * Initialize Flatpickr date picker on date inputs
- */
-function initializeFlatpickr() {
-  // Helper function to calculate and set font size based on calendar width
-  function updateCalendarFontSize(instance) {
-    // Calculate base font size (proportional to container width)
-    const width = instance.calendarContainer.offsetWidth;
-    const baseFontSize = Math.max(12, Math.min(18, width * 0.05)); // Increased min/max and multiplier
-    
-    // Apply the calculated font size
-    instance.calendarContainer.style.fontSize = baseFontSize + 'px';
-  }
-  
-  function updateCalendarWidth(instance) {
-    // Make calendar slightly wider than input to ensure all days are visible
-    // Ensure minimum width of 280px
-    const newWidth = Math.max(280, instance.input.offsetWidth * 1.1);
-    instance.calendarContainer.style.width = newWidth + 'px';
-    
-    // Update font size after width change
-    updateCalendarFontSize(instance);
-  }
-  
-  function setupFlatpickr(inputId) {
-    return flatpickr("#" + inputId, {
-      dateFormat: "Y-m-d",
-      allowInput: true,
-      onReady: function(selectedDates, dateStr, instance) {
-        // Set initial width and font size
-        updateCalendarWidth(instance);
-      },
-      onOpen: function(selectedDates, dateStr, instance) {
-        // Update width and font size when opening
-        updateCalendarWidth(instance);
-        
-        // When calendar opens, change the input type to text to maintain the placeholder
-        instance.input.type = 'text';
-      },
-      onClose: function(selectedDates, dateStr, instance) {
-        // When calendar closes without a selection, keep it as text
-        if (!dateStr) {
-          instance.input.type = 'text';
-        }
-      }
-    });
-  }
-  
   // Initialize Flatpickr on both date inputs
   const fromDatePicker = setupFlatpickr("h-from-date");
   const toDatePicker = setupFlatpickr("h-to-date");
   
+  // Initialize Flatpickr for destination page form if it exists
+  const destFromDatePicker = setupFlatpickr("from-date");
+  const destToDatePicker = setupFlatpickr("to-date");
+  
   // Handle window resize to update calendar width and font size
   window.addEventListener('resize', function() {
     // Only update if calendar is open
-    if (fromDatePicker.isOpen) {
+    if (fromDatePicker && fromDatePicker.isOpen) {
       updateCalendarWidth(fromDatePicker);
     }
-    if (toDatePicker.isOpen) {
+    if (toDatePicker && toDatePicker.isOpen) {
       updateCalendarWidth(toDatePicker);
     }
+    if (destFromDatePicker && destFromDatePicker.isOpen) {
+      updateCalendarWidth(destFromDatePicker);
+    }
+    if (destToDatePicker && destToDatePicker.isOpen) {
+      updateCalendarWidth(destToDatePicker);
+    }
   });
-}
+});

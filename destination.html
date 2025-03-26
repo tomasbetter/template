@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travel agency: Paris Destination</title>
+    <meta name="description" content="Travel agency: Paris Destination">
+    <meta name="author" content="You">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Dancing+Script&family=Montserrat:400,700&&display=swap"
+      rel="stylesheet"
+    >
+    <!-- Flatpickr (Custom Date Picker) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Consolidated Custom CSS -->
+    <link href="./css/styles.css" rel="stylesheet" type="text/css">
+    <style>
+      .hero-image-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .hero-image-container img {
+        max-height: 500px;
+        width: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="small-header">
+      <div class="container">
+        <div class="nav-container fade-in fade-in-1 transition-opacity">
+          <div class="search-icon" id="search-toggle">
+            <img src="./icons/search-white.svg" alt="Search">
+          </div>
+          <img src="./icons/globe-white.svg" alt="Logo" class="logo">
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div class="menu-icon">
+            <img src="./icons/three-bars-white.svg" alt="Menu">
+          </div>
+        </div>
+        <div class="search-form-container fade-in" id="search-form">
+          <form class="search-form">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search destinations..." required>
+              <button type="submit" class="btn">
+                <img src="./icons/search-white.svg" alt="Search">
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="header-content">
+          <div class="tagline fade-in fade-in-2">CITY OF LIGHT</div>
+          <h1 class="fade-in fade-in-3 transition-opacity">
+            Paris
+          </h1>
+        </div>
+      </div>
+    </header>
+
+    <section class="destination-detail">
+      <div class="container">
+        <!-- Hero Image and Booking Form Side by Side -->
+        <div class="row mb-5">
+          <!-- Hero Image -->
+          <div class="col-md-7">
+            <div class="hero-image-container">
+              <img src="./images/destinations/paris.jpg" alt="Paris" class="img-fluid rounded shadow fade-in fade-in-1">
+            </div>
+          </div>
+          
+          <!-- Booking Form -->
+          <div class="col-md-5">
+            <div class="booking-form-container fade-in fade-in-3">
+              <h2 class="text-center mb-4">Book Your Trip to Paris</h2>
+              <form id="destination-booking-form" class="row g-3">
+                <!-- From Date -->
+                <div class="col-12">
+                  <label for="from-date" class="form-label">From</label>
+                  <input type="text" class="form-control form-input" id="from-date" placeholder="Add dates" required autocomplete="off">
+                </div>
+                
+                <!-- To Date -->
+                <div class="col-12">
+                  <label for="to-date" class="form-label">To</label>
+                  <input type="text" class="form-control form-input" id="to-date" placeholder="Add dates" required autocomplete="off">
+                </div>
+                
+                <!-- Guests -->
+                <div class="col-12">
+                  <label for="guests" class="form-label">Guests</label>
+                  <input type="number" class="form-control form-input" id="guests" value="2" min="1" max="10" required>
+                </div>
+
+                <!-- Room Type -->
+                <div class="col-12">
+                  <label for="room-type" class="form-label">Room Type</label>
+                  <select id="room-type" class="form-select form-input" required>
+                    <option value="" selected>Select room type</option>
+                    <option value="standard">Standard Room</option>
+                    <option value="deluxe">Deluxe Room</option>
+                    <option value="suite">Suite</option>
+                  </select>
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="col-12 text-center">
+                  <button type="submit" class="btn btn-primary d-inline-flex align-items-center transition-all">
+                    <span class="me-2">Book Now</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="row mb-5">
+          <div class="destinations-text fade-in fade-in-2 transition-opacity row">
+            <div class="col-md-4">
+              <div class="destination-description">
+                <p>
+                  Paris, the City of Light, is a timeless destination that captures the hearts of travelers from around the world. 
+                  From the iconic Eiffel Tower to the historic Notre-Dame Cathedral, every corner of this magnificent city tells a story 
+                  of art, culture, and romance. The city's grand boulevards, charming cafés, and world-class museums create an atmosphere 
+                  that is both sophisticated and inviting.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="destination-description">
+                <p>
+                  The city's rich cultural heritage is evident in its architecture, from the Gothic splendor of Sainte-Chapelle to 
+                  the modern glass pyramid of the Louvre. Art lovers will find themselves in paradise, with masterpieces from the 
+                  Renaissance to contemporary works on display in the city's many galleries. The Musée d'Orsay, housed in a former 
+                  railway station, offers a unique setting for its collection of Impressionist art.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="destination-description">
+                <p>
+                  Beyond its cultural treasures, Paris is a city of culinary excellence. From Michelin-starred restaurants to 
+                  neighborhood bistros, the city offers an endless array of dining experiences. The local markets, such as Marché 
+                  des Enfants Rouges, provide a glimpse into daily Parisian life and offer fresh, local ingredients. Whether you're 
+                  sipping coffee at a sidewalk café or enjoying a leisurely dinner along the Seine, Paris offers countless moments 
+                  of pure pleasure.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Back to Destinations Link -->
+        <div class="row mt-5">
+          <div class="col-12 text-center">
+            <a href="destinations.html" class="btn btn-outline-primary fade-in fade-in-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 1 15 8z"/>
+              </svg>
+              Back to Destinations
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 footer-links fade-in fade-in-1 transition-opacity">
+            <h3>Links</h3>
+            <ul class="list-unstyled">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="destinations.html">Destinations</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-8 newsletter fade-in fade-in-2 transition-opacity ms-auto">
+            <h3>Newsletter</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              euismod, nisl nec tincidunt dapibus, magna libero fermentum augu.
+            </p>
+            <form class="newsletter-form" id="newsletter-form">
+              <div class="input-group">
+                <input type="email" class="form-control form-input" placeholder="Email" required>
+                <button type="submit" class="subscribe-button btn btn-success">
+                  Subscribe <img src="./icons/arrow-right-white.svg" alt="Subscribe">
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- Consolidated Custom JavaScript -->
+    <script src="./js/script.js"></script>
+  </body>
+</html>
