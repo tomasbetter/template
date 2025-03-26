@@ -1259,6 +1259,7 @@ footer h3 {
 /* Destination Detail Page Styles */
 .destination-detail {
   padding: var(--spacing-xl) 0;
+  padding-bottom: var(--spacing-lg);
   background-color: var(--color-white);
 }
 
@@ -1329,7 +1330,7 @@ footer h3 {
 /* Responsive Styles for Destination Detail Page */
 @media (max-width: 767px) {
   .destination-detail {
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-lg);
   }
 
   .destination-description {
