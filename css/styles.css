@@ -1,54 +1,68 @@
+/* ==========================================================================
+   Main Stylesheet
+   Description: Core styles for the travel website including variables, components,
+   and responsive layouts.
+   ========================================================================== */
 
-/* ===== VARIABLES ===== */
+/* ==========================================================================
+   Variables
+   Description: Global CSS variables for colors, typography, spacing, and other
+   design tokens used throughout the application.
+   ========================================================================== */
 :root {
   /* Colors */
-  --color-primary: #ffc107;
-  --color-primary-dark: #e6ac00;
-  --color-secondary: #333;
-  --color-text: #555;
-  --color-text-light: #666;
-  --color-white: #fff;
-  --color-light-bg: rgba(255, 255, 255, 0.9);
-  --color-border: #ddd;
-  --color-success: #198754;
-  --color-success-dark: #146c43;
+  --color-primary: #ffc107;      /* Main brand color - yellow */
+  --color-primary-dark: #e6ac00; /* Darker shade for hover states */
+  --color-secondary: #333;       /* Dark gray for text and backgrounds */
+  --color-text: #555;            /* Main text color */
+  --color-text-light: #666;      /* Lighter text for secondary content */
+  --color-white: #fff;           /* Pure white */
+  --color-light-bg: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  --color-border: #ddd;          /* Light gray for borders */
+  --color-success: #198754;      /* Green for success states */
+  --color-success-dark: #146c43; /* Darker green for hover states */
   
   /* Typography */
-  --font-primary: 'Montserrat', sans-serif;
-  --font-accent: 'Dancing Script', cursive;
+  --font-primary: 'Montserrat', sans-serif;    /* Main font for body text */
+  --font-accent: 'Dancing Script', cursive;    /* Decorative font for headings */
   
-  /* Spacing */
-  --spacing-xs: 5px;
-  --spacing-sm: 10px;
-  --spacing-md: 20px;
-  --spacing-lg: 30px;
-  --spacing-xl: 40px;
-  --spacing-xxl: 50px;
-  --section-padding: var(--spacing-xl) var(--spacing-lg);
-  --section-padding-desktop: 50px;
+  /* Spacing System */
+  --spacing-xs: 5px;    /* Extra small spacing */
+  --spacing-sm: 10px;   /* Small spacing */
+  --spacing-md: 20px;   /* Medium spacing */
+  --spacing-lg: 30px;   /* Large spacing */
+  --spacing-xl: 40px;   /* Extra large spacing */
+  --spacing-xxl: 50px;  /* Extra extra large spacing */
   
-  /* Border Radius */
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 12px;
-  --border-radius-xl: 20px;
+  /* Layout Spacing */
+  --section-padding: var(--spacing-xl) var(--spacing-lg); /* Default section padding */
+  --section-padding-desktop: 50px;                        /* Desktop section padding */
   
-  /* Shadows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Border Radius System */
+  --border-radius-sm: 4px;   /* Small radius for buttons */
+  --border-radius-md: 8px;   /* Medium radius for cards */
+  --border-radius-lg: 12px;  /* Large radius for containers */
+  --border-radius-xl: 20px;  /* Extra large radius for special elements */
   
-  /* Transitions */
-  --transition-fast: 0.2s ease;
-  --transition-medium: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  /* Shadow System */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Medium shadow */
   
-  /* Animations */
-  --fade-in-duration: 0.8s;
-  --fade-in-delay-increment: 0.15s;
+  /* Animation Timings */
+  --transition-fast: 0.2s ease;    /* Quick transitions */
+  --transition-medium: 0.3s ease;  /* Standard transitions */
+  --transition-slow: 0.5s ease;    /* Slow transitions */
+  
+  /* Animation Delays */
+  --fade-in-duration: 0.8s;                    /* Base fade-in duration */
+  --fade-in-delay-increment: 0.15s;            /* Delay between staggered animations */
 }
 
-/* ===== UTILITY CLASSES ===== */
-/* Transitions */
+/* ==========================================================================
+   Utility Classes
+   Description: Reusable utility classes for common styling needs.
+   ========================================================================== */
+/* Transition Utilities */
 .transition-opacity {
   transition: opacity var(--transition-medium);
 }
@@ -61,12 +75,15 @@
   transition: all var(--transition-medium);
 }
 
-/* Section Padding */
+/* Layout Utilities */
 .section-padding {
   padding: var(--section-padding);
 }
 
-/* ===== ANIMATIONS ===== */
+/* ==========================================================================
+   Animations
+   Description: Keyframe animations and animation utility classes.
+   ========================================================================== */
 /* Fade In Animation */
 @keyframes fadeIn {
   from {
@@ -79,26 +96,33 @@
   }
 }
 
-/* Apply animations to elements */
+/* Animation Utility Classes */
 .fade-in {
   opacity: 0;
   animation: fadeIn var(--fade-in-duration) forwards;
 }
 
-/* Staggered animations for multiple elements */
+/* Staggered Animation Delays */
 .fade-in-1 { animation-delay: calc(1 * var(--fade-in-delay-increment)); }
 .fade-in-2 { animation-delay: calc(2 * var(--fade-in-delay-increment)); }
 .fade-in-3 { animation-delay: calc(3 * var(--fade-in-delay-increment)); }
 .fade-in-4 { animation-delay: calc(4 * var(--fade-in-delay-increment)); }
 .fade-in-5 { animation-delay: calc(5 * var(--fade-in-delay-increment)); }
 
+/* ==========================================================================
+   Base Styles
+   Description: Core HTML element styles and global settings.
+   ========================================================================== */
 /* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* ===== COMMON COMPONENT STYLES ===== */
-/* Button Styles */
+/* ==========================================================================
+   Component Styles
+   Description: Reusable UI components and their variations.
+   ========================================================================== */
+/* Button Components */
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -133,7 +157,7 @@ html {
   color: var(--color-white);
 }
 
-/* Form Input Styles */
+/* Form Components */
 .form-input {
   width: 100%;
   padding: var(--spacing-md);
@@ -161,7 +185,11 @@ html {
   font-weight: 500;
 }
 
-/* ===== HEADER STYLES ===== */
+/* ==========================================================================
+   Layout Components
+   Description: Major layout components like header, navigation, and footer.
+   ========================================================================== */
+/* Header Component */
 header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/header.jpg');
   background-size: cover;
@@ -173,13 +201,13 @@ header {
   flex-direction: column;
 }
 
-/* Small Header (for inner pages) */
+/* Small Header Variant */
 .small-header {
   min-height: 40vh;
   padding-bottom: 30px;
 }
 
-/* Navigation */
+/* Navigation Component */
 .nav-container {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -188,7 +216,7 @@ header {
   padding-bottom: var(--spacing-sm);
   margin-bottom: 15px;
   position: relative;
-  z-index: 10; /* Establish stacking context */
+  z-index: 10;
 }
 
 .nav-container::after {
@@ -958,15 +986,22 @@ footer h3 {
   height: 48px; /* Match the height of form inputs */
 }
 
-/* ===== MEDIA QUERIES ===== */
+/* ==========================================================================
+   Media Queries
+   Description: Responsive breakpoints and their associated styles.
+   Breakpoints:
+   - Mobile: < 768px
+   - Tablet: 768px - 991px
+   - Desktop: ≥ 992px
+   ========================================================================== */
 /* Mobile Styles (max-width: 767px) */
 @media (max-width: 767px) {
-  /* Header padding for mobile */
+  /* Header Mobile Adjustments */
   header {
     padding: var(--spacing-lg);
   }
   
-  /* Destinations section padding for mobile to match header */
+  /* Destinations Section Mobile Adjustments */
   .destinations-section {
     padding: var(--spacing-lg);
   }
@@ -980,7 +1015,7 @@ footer h3 {
     width: 100%;
   }
   
-  /* Destination field - full width on first line */
+  /* Form Field Layouts */
   #horizontal-booking-form > div:nth-child(1) {
     flex: 0 0 100%;
     width: 100%;
@@ -989,7 +1024,6 @@ footer h3 {
     padding-right: 0;
   }
   
-  /* From and To fields - half width each on second line */
   #horizontal-booking-form > div:nth-child(2),
   #horizontal-booking-form > div:nth-child(3) {
     flex: 0 0 calc(50% - 5px);
@@ -997,7 +1031,7 @@ footer h3 {
     max-width: calc(50% - 5px);
   }
   
-  /* Align "From" label to the left (default) and "To" label to the right */
+  /* Form Label Alignments */
   #horizontal-booking-form > div:nth-child(2) label {
     text-align: left;
   }
@@ -1006,17 +1040,8 @@ footer h3 {
     text-align: left;
   }
   
-  /* Guests field - full width on third line with same alignment as destination */
-  #horizontal-booking-form > div:nth-child(4) {
-    flex: 0 0 100%;
-    width: 100%;
-    max-width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-    margin-bottom: 10px;
-  }
-  
-  /* Search button - full width on fourth line with same alignment as destination */
+  /* Full Width Form Elements */
+  #horizontal-booking-form > div:nth-child(4),
   #horizontal-booking-form > div:nth-child(5) {
     flex: 0 0 100%;
     width: 100%;
@@ -1025,13 +1050,13 @@ footer h3 {
     padding-right: 0;
   }
   
-  /* Make the button take full width of its container */
+  /* Button Adjustments */
   #horizontal-booking-form > div:nth-child(5) button {
     width: 100%;
     justify-content: center;
   }
   
-  /* Ensure consistent padding for all form elements */
+  /* Form Element Consistency */
   #horizontal-booking-form > div > select,
   #horizontal-booking-form > div > input,
   #horizontal-booking-form > div > button {
@@ -1039,7 +1064,7 @@ footer h3 {
     box-sizing: border-box;
   }
   
-  /* Override padding for columns in mobile view */
+  /* Column Padding Reset */
   #horizontal-booking-form > div.col {
     padding: 0;
   }
@@ -1051,24 +1076,24 @@ footer h3 {
     width: 100%;
   }
   
-  /* Adjust nav-container border to match container width */
+  /* Navigation Border Adjustment */
   .nav-container::after {
     left: 0 !important;
     right: 0 !important;
-    bottom: calc(-1 * var(--spacing-sm)) !important; /* Move line down to create equal spacing with top */
+    bottom: calc(-1 * var(--spacing-sm)) !important;
   }
 }
 
 /* Tablet and Desktop Styles (min-width: 768px) */
 @media (min-width: 768px) {
-  /* Section Padding */
+  /* Section Padding Standardization */
   header, 
   .destinations-section,
   footer {
     padding: var(--section-padding-desktop);
   }
   
-  /* Header Styles */
+  /* Navigation Desktop Layout */
   .nav-container {
     padding: 0;
     padding-bottom: 40px;
@@ -1080,10 +1105,12 @@ footer h3 {
     right: 0;
   }
   
+  /* Hide Mobile Menu Icon */
   .menu-icon {
     display: none;
   }
   
+  /* Desktop Navigation Links */
   .nav-links {
     display: flex;
     gap: var(--spacing-xl);
@@ -1092,21 +1119,23 @@ footer h3 {
     justify-self: end;
   }
   
+  /* Navigation Link Styles */
   .nav-links a {
     color: var(--color-white);
     text-decoration: none;
     font-family: var(--font-primary);
     font-weight: 500;
     transition: color var(--transition-fast);
-    padding: 8px 0; /* Add vertical padding to match sign-in button */
-    line-height: 1.2; /* Consistent line height */
-    display: inline-block; /* Allows padding to work properly */
+    padding: 8px 0;
+    line-height: 1.2;
+    display: inline-block;
   }
   
   .nav-links a:hover {
     color: var(--color-primary);
   }
   
+  /* Sign In Button Special Styling */
   .nav-links .sign-in {
     background-color: var(--color-white);
     color: var(--color-secondary);
@@ -1121,6 +1150,7 @@ footer h3 {
     color: var(--color-white);
   }
   
+  /* Header Content Desktop Layout */
   .header-content {
     align-items: flex-start;
     padding-top: 150px;
@@ -1128,6 +1158,7 @@ footer h3 {
     justify-content: flex-end;
   }
   
+  /* Typography Adjustments */
   .tagline {
     font-size: 0.9rem;
     letter-spacing: 1.5px;
@@ -1144,13 +1175,13 @@ footer h3 {
     display: inline;
   }
   
-  /* Booking Form Desktop Styles */
+  /* Desktop Booking Form */
   .booking-form-alt {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     gap: var(--spacing-md);
-    margin-top: auto; /* Push to bottom of header-content */
+    margin-top: auto;
     padding: 0;
     width: 100%;
   }
@@ -1159,12 +1190,12 @@ footer h3 {
     flex: 1;
   }
   
-  /* Hide original booking form on desktop */
+  /* Hide Mobile Booking Form */
   .booking-form {
     display: none;
   }
   
-  /* Destinations Section */
+  /* Destinations Section Desktop */
   .destinations-section h2 {
     font-size: 2.2rem;
   }
@@ -1181,7 +1212,7 @@ footer h3 {
     height: 280px;
   }
   
-  /* Footer Styles */
+  /* Footer Desktop Layout */
   .footer-container {
     display: flex;
     justify-content: space-between;
@@ -1210,12 +1241,12 @@ footer h3 {
 
 /* Large Desktop Styles (min-width: 992px) */
 @media (min-width: 992px) {
-  /* Destination Cards */
+  /* Enhanced Card Heights */
   .destination-card {
     height: 320px;
   }
   
-  /* Footer Layout */
+  /* Optimized Footer Layout */
   .footer-links {
     width: 30%;
   }
