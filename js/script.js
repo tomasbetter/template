@@ -25,12 +25,14 @@ function updateCalendarWidth(instance) {
 }
 
 // Function to setup Flatpickr instance
-function setupFlatpickr(inputId) {
-  return flatpickr("#" + inputId, {
+function setupFlatpickr(inputId, options = {}) {
+  // Create configuration with minDate set to today
+  const config = {
     dateFormat: "Y-m-d",
     allowInput: true,
     disableMobile: true, // Disable mobile native date picker
     defaultDate: null, // Don't set any default date
+    minDate: "today", // Prevent selecting dates before today
     onReady: function(selectedDates, dateStr, instance) {
       // Set initial width and font size
       updateCalendarWidth(instance);
@@ -50,8 +52,11 @@ function setupFlatpickr(inputId) {
         instance.input.type = 'text';
         instance.input.value = '';
       }
-    }
-  });
+    },
+    ...options // Merge any additional options
+  };
+  
+  return flatpickr("#" + inputId, config);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -143,14 +148,117 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+  
+  // Destination page booking form validation
+  const destinationBookingForm = document.getElementById('destination-booking-form');
+  if (destinationBookingForm) {
+    destinationBookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const fromDate = document.getElementById('from-date');
+      const toDate = document.getElementById('to-date');
+      const guests = document.getElementById('guests');
+      const roomType = document.getElementById('room-type');
+      
+      if (fromDate.value && toDate.value && guests.value && roomType.value) {
+        alert('Booking submitted successfully!');
+        this.reset();
+      } else {
+        alert('Please fill in all fields');
+      }
+    });
+  }
 
-  // Initialize Flatpickr on both date inputs
+  // Initialize Flatpickr on both date inputs for homepage
   const fromDatePicker = setupFlatpickr("h-from-date");
   const toDatePicker = setupFlatpickr("h-to-date");
   
-  // Initialize Flatpickr for destination page form if it exists
-  const destFromDatePicker = setupFlatpickr("from-date");
-  const destToDatePicker = setupFlatpickr("to-date");
+  // Link the date pickers so "To" date can't be before "From" date
+  if (fromDatePicker && toDatePicker) {
+    fromDatePicker.config.onChange.push(function(selectedDates, dateStr) {
+      if (selectedDates[0]) {
+        // Set the minimum date of the "To" picker to be the selected "From" date
+        toDatePicker.set('minDate', selectedDates[0]);
+      }
+    });
+  }
+  
+  // Debug: Check if destination page date inputs exist
+  console.log("Destination date inputs:", 
+    document.getElementById("from-date"), 
+    document.getElementById("to-date")
+  );
+  
+  // Direct initialization for destination.html date pickers
+  if (document.querySelector('#destination-booking-form #from-date')) {
+    console.log("Found destination booking form inputs, initializing directly");
+    
+    const destFromDatePicker = flatpickr("#destination-booking-form #from-date", {
+      dateFormat: "Y-m-d",
+      allowInput: true,
+      disableMobile: true,
+      defaultDate: null,
+      minDate: "today",
+      onReady: function(selectedDates, dateStr, instance) {
+        updateCalendarWidth(instance);
+        instance.input.value = '';
+      },
+      onOpen: function(selectedDates, dateStr, instance) {
+        updateCalendarWidth(instance);
+        instance.input.type = 'text';
+      },
+      onClose: function(selectedDates, dateStr, instance) {
+        if (!dateStr) {
+          instance.input.type = 'text';
+          instance.input.value = '';
+        }
+      }
+    });
+    
+    const destToDatePicker = flatpickr("#destination-booking-form #to-date", {
+      dateFormat: "Y-m-d",
+      allowInput: true,
+      disableMobile: true,
+      defaultDate: null,
+      minDate: "today",
+      onReady: function(selectedDates, dateStr, instance) {
+        updateCalendarWidth(instance);
+        instance.input.value = '';
+      },
+      onOpen: function(selectedDates, dateStr, instance) {
+        updateCalendarWidth(instance);
+        instance.input.type = 'text';
+      },
+      onClose: function(selectedDates, dateStr, instance) {
+        if (!dateStr) {
+          instance.input.type = 'text';
+          instance.input.value = '';
+        }
+      }
+    });
+    
+    // Link the pickers
+    destFromDatePicker.config.onChange.push(function(selectedDates) {
+      if (selectedDates[0]) {
+        destToDatePicker.set('minDate', selectedDates[0]);
+      }
+    });
+  } else {
+    // Fallback to the original method
+    console.log("Falling back to original method for destination date pickers");
+    const destFromDatePicker = setupFlatpickr("from-date");
+    const destToDatePicker = setupFlatpickr("to-date");
+    
+    // Link the destination page date pickers if they exist
+    if (destFromDatePicker && destToDatePicker) {
+      destFromDatePicker.config.onChange.push(function(selectedDates, dateStr) {
+        if (selectedDates[0]) {
+          // Set the minimum date of the "To" picker to be the selected "From" date
+          destToDatePicker.set('minDate', selectedDates[0]);
+        }
+      });
+    }
+  }
   
   // Handle window resize to update calendar width and font size
   window.addEventListener('resize', function() {
