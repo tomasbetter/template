@@ -99,21 +99,35 @@ document.addEventListener('DOMContentLoaded', function() {
     window.scrollTo(0, 0);
   }
   
-  // Search form toggle
+  // Expandable search bar toggle
   const searchToggle = document.getElementById('search-toggle');
-  const searchForm = document.getElementById('search-form');
+  const searchInput = document.querySelector('.search-input');
   
-  searchToggle.addEventListener('click', function() {
-    searchForm.classList.toggle('active');
+  searchToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    searchInput.classList.toggle('expanded');
+    if (searchInput.classList.contains('expanded')) {
+      searchInput.focus();
+    }
   });
   
-  // Search form submission
-  const searchFormElement = document.querySelector('.search-form');
-  searchFormElement.addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Search submitted!');
-    searchForm.classList.remove('active');
-    searchFormElement.reset();
+  // Close search when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!searchToggle.contains(event.target) && 
+        !searchInput.contains(event.target) && 
+        searchInput.classList.contains('expanded')) {
+      searchInput.classList.remove('expanded');
+    }
+  });
+  
+  // Search input submission
+  searchInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      alert('Search submitted!');
+      searchInput.classList.remove('expanded');
+      searchInput.value = '';
+    }
   });
   
   // Newsletter form validation
