@@ -36,8 +36,11 @@
     <header class="small-header">
       <div class="container">
         <div class="nav-container fade-in fade-in-1 transition-opacity">
-          <div class="search-icon" id="search-toggle">
-            <img src="./icons/search-white.svg" alt="Search">
+          <div class="search-container">
+            <button class="search-icon" id="search-toggle" aria-label="Search">
+              <img src="./icons/search-white.svg" alt="Search">
+            </button>
+            <input type="text" class="search-input form-control" placeholder="Search...">
           </div>
           <a href="index.html">
             <img src="./icons/globe-white.svg" alt="Logo" class="logo">
@@ -50,16 +53,6 @@
           <div class="menu-icon">
             <img src="./icons/three-bars-white.svg" alt="Menu">
           </div>
-        </div>
-        <div class="search-form-container fade-in" id="search-form">
-          <form class="search-form">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search destinations..." required>
-              <button type="submit" class="btn">
-                <img src="./icons/search-white.svg" alt="Search">
-              </button>
-            </div>
-          </form>
         </div>
         <div class="header-content">
           <div class="tagline fade-in fade-in-2">CITY OF LIGHT</div>
